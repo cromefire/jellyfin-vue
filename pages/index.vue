@@ -44,7 +44,7 @@ export default Vue.extend({
 
     // Filter for valid sections in Jellyfin Vue
     let homeSectionsArray = pickBy(
-      this.$store.state.user.displayPreferences,
+      this.$store.state.user.User.displayPreferences,
       (value: string, key: string) => {
         return (
           value &&
@@ -66,7 +66,7 @@ export default Vue.extend({
             const latestMediaSections = [];
 
             const userViewsRequest = await this.$userViewsApi.getUserViews({
-              userId: this.$auth.user.Id
+              userId: this.$auth.user.User.Id
             });
 
             if (userViewsRequest.data.Items) {

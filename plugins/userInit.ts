@@ -14,6 +14,8 @@ export default async (context: Context): Promise<void> => {
       userId: context.store.state.user.id
     });
 
-    context.$auth.setUser(response.data);
+    context.store.state.user.User = response.data;
+
+    context.$auth.setUser(context.store.state.user);
   }
 };

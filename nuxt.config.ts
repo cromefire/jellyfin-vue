@@ -32,7 +32,10 @@ const config: NuxtConfig = {
   /*
    ** Global CSS
    */
-  css: ['@mdi/font/css/materialdesignicons.css'],
+  css: [
+    '@mdi/font/css/materialdesignicons.css',
+    'node_modules/video.js/dist/video-js.css'
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -50,7 +53,9 @@ const config: NuxtConfig = {
     'plugins/tvShowsApi.ts',
     'plugins/userApi.ts',
     'plugins/userLibraryApi.ts',
-    'plugins/userViewsApi.ts'
+    'plugins/userViewsApi.ts',
+    'plugins/mediaInfoApi.ts',
+    'plugins/videosApi.ts'
   ],
   /*
    ** Auto import components
@@ -174,7 +179,8 @@ const config: NuxtConfig = {
       options: {
         customProperties: true
       }
-    }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any // TODO: Bug in vuetify their properties aren't properly optional for strict mode
   },
   /*
    ** Build configuration

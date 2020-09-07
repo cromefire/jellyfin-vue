@@ -28,10 +28,12 @@
     "@nuxtjs/axios": "^5.12.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@types/lodash": "^4.14.161",
+    "@types/video.js": "^7.3.10",
     "lodash": "^4.17.20",
     "nuxt": "^2.14.0",
     "nuxt-i18n": "^6.13.12",
     "nuxt-vuex-localstorage": "^1.2.7",
+    "video.js": "^7.8.4",
     "vueperslides": "^2.10.7"
   },
   "devDependencies": {

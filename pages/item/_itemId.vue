@@ -7,7 +7,9 @@
       <v-col cols="8">
         <h1>{{ item.Name }}</h1>
         <p>{{ item.Overview }}</p>
-        <v-btn color="primary">{{ $t('play') }}</v-btn>
+        <v-btn :to="'/player/video/' + id" color="primary">
+          {{ $t('play') }}
+        </v-btn>
         <v-btn>{{ $t('more') }}</v-btn>
       </v-col>
     </v-row>
@@ -23,15 +25,17 @@ export default Vue.extend({
   mixins: [imageHelper],
   data() {
     return {
-      item: {} as BaseItemDto
+      item: {} as BaseItemDto,
+      id: null as string | null
     };
   },
 
   async beforeMount() {
+    this.id = this.$route.params.itemId;
     const Item = (
       await this.$itemsApi.getItems({
-        uId: this.$auth.user.Id,
-        userId: this.$auth.user.Id,
+        uId: this.$auth.user.User.Id,
+        userId: this.$auth.user.User.Id,
         ids: this.$route.params.itemId,
         fields: 'Overview'
       })

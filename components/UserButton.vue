@@ -6,7 +6,7 @@
           <v-img
             v-if="userImage"
             :src="userImage"
-            :alt="$auth.user.name"
+            :alt="$auth.user.User.name"
           ></v-img>
           <v-icon v-else dark>mdi-account</v-icon>
         </v-avatar>
@@ -44,8 +44,8 @@ export default Vue.extend({
   computed: {
     userImage: {
       get() {
-        if (this.$auth.user?.PrimaryImageTag) {
-          return `${this.$axios.defaults.baseURL}/Users/${this.$auth.user.Id}/Images/Primary/?tag=${this.$auth.user.PrimaryImageTag}&maxWidth=36`;
+        if (this.$auth.user.User?.PrimaryImageTag) {
+          return `${this.$axios.defaults.baseURL}/Users/${this.$auth.user.User.Id}/Images/Primary/?tag=${this.$auth.user.User.PrimaryImageTag}&maxWidth=36`;
         } else {
           return '';
         }

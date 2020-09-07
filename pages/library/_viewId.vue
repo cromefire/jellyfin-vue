@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { BaseItemDto } from '../../api';
+import { BaseItemDto } from '~/api';
 
 export default Vue.extend({
   data() {
@@ -29,12 +29,10 @@ export default Vue.extend({
   async beforeMount() {
     try {
       const collectionInfo = await this.$itemsApi.getItems({
-        uId: this.$auth.user.Id,
-        userId: this.$auth.user.Id,
+        uId: this.$auth.user.User.Id,
+        userId: this.$auth.user.User.Id,
         ids: this.$route.params.viewId
       });
-
-      console.dir(collectionInfo.data.Items);
 
       if (
         collectionInfo.data.Items &&
@@ -44,8 +42,8 @@ export default Vue.extend({
         this.name = collectionInfo.data.Items[0].Name || '';
 
         const itemsResponse = await this.$itemsApi.getItems({
-          uId: this.$auth.user.Id,
-          userId: this.$auth.user.Id,
+          uId: this.$auth.user.User.Id,
+          userId: this.$auth.user.User.Id,
           parentId: this.$route.params.viewId,
           sortBy: 'SortName',
           sortOrder: 'Ascending'

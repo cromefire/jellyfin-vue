@@ -13,12 +13,14 @@
         type="url"
         :rules="rules.serverUrlTest"
         required
+        name="serverAddress"
       ></v-text-field>
       <v-text-field
         v-model="login.username"
         outlined
         :label="$t('username')"
         :rules="[(v) => !!v || $t('usernameRequired')]"
+        name="username"
         required
       ></v-text-field>
       <v-text-field
@@ -27,6 +29,7 @@
         :label="$t('password')"
         :append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
         :type="showPassword ? 'text' : 'password'"
+        name="password"
         @click:append="() => (showPassword = !showPassword)"
       ></v-text-field>
       <v-row align="center" no-gutters>
@@ -88,7 +91,7 @@ export default Vue.extend({
           // TODO: Generate the token properly
           accessToken
         );
-        this.$auth.setUser(response.data.User);
+        this.$auth.setUser(response.data);
         this.$user.set(response.data.User.Id, this.serverUrl, accessToken);
       } catch (error) {
         let errorMessage = this.$t('unexpectedError');

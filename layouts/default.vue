@@ -111,7 +111,7 @@ export default Vue.extend({
   },
   async beforeMount() {
     const userViewsRequest = await this.$userViewsApi.getUserViews({
-      userId: this.$auth.user.Id
+      userId: this.$auth.user.User.Id
     });
 
     let userViews: Array<NavigationDrawerItem> = [];
